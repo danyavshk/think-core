@@ -29,7 +29,7 @@
 |--------|------------|-------------|
 | <img src="https://cdn.simpleicons.org/node.js/339933" height="24"/> | **Node.js** | Серверная часть (Backend) |
 | <img src="https://cdn.simpleicons.org/vue.js/4FC08D" height="24"/> | **Vue.js** | Фронтенд-фреймворк |
-| <img src="https://cdn.simpleicons.org/typescript/3178C6" height="24"/> | **TypeScript** | Типобезопасный JavaScript |
+| <img src="https://cdn.simpleicons.org/typescript/3178C6" height="24"/> | **TypeScript** | Безопасный JavaScript |
 | <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" height="24"/> | **Tailwind CSS** | Утилитарный CSS |
 | <img src="https://vuejs.org/images/logo.png" height="24"/> | **Vue Router** | SPA-маршрутизация |
 | <img src="https://pinia.vuejs.org/logo.svg" height="24"/> | **Pinia** | Состояние приложения |
