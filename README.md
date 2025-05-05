@@ -37,8 +37,6 @@
 | <img src="https://cdn.simpleicons.org/vite/646CFF" height="24"/> | **Vite** | Сборка и разработка |
 | <img src="https://cdn.simpleicons.org/netlify/00C7B7" height="24"/> | **Netlify** | Деплой и хостинг |
 
-> Примечание: Иконки подгружаются через CDN [Simple Icons](https://simpleicons.org/). Работает в большинстве markdown-вьюеров.
-
 ---
 
 ## 📌 Описание проекта
