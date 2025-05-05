@@ -1,39 +1,38 @@
-# think-core
+# 🎓 Дипломный проект студентов группы **ВТиПО-21**
 
-This template should help get you started developing with Vue 3 in Vite.
+## 👨‍💻 Авторы
+- **Вишняков Д.В.**
+- **Наскенов А.Б.**
 
-## Recommended IDE Setup
+## 📍 Северо-Казахстанский университет им. М. Козыбаева  
+**Город Петропавловск, 2025 год**
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Type Support for `.vue` Imports in TS
+## 🔗 Ссылки
+- 🌐 [Сайт проекта](https://frabjous-sprinkles-05a1f0.netlify.app/)
+- 📄 Документация: _в процессе подготовки_
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## 🧰 Используемый стек технологий
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+| Технология     | Назначение                          |
+|----------------|-------------------------------------|
+| [Node.js](https://nodejs.org/)       | Серверная часть / Backend                 |
+| [Vue.js](https://vuejs.org/)         | Фронтенд фреймворк                        |
+| [TypeScript](https://www.typescriptlang.org/) | Безопасный JavaScript                    |
+| [Tailwind CSS](https://tailwindcss.com/) | Утилитарная CSS-библиотека               |
+| [Vue Router](https://router.vuejs.org/) | Маршрутизация SPA                        |
+| [Pinia](https://pinia.vuejs.org/)     | Состояние приложения (Store)             |
+| [Supabase](https://supabase.com/)     | База данных и аутентификация             |
+| [Vite](https://vitejs.dev/)           | Быстрая сборка проекта                   |
+| [Netlify](https://www.netlify.com/)   | Хостинг и деплой                          |
 
-## Project Setup
+---
 
-```sh
-npm install
-```
+## 📌 Описание проекта
 
-### Compile and Hot-Reload for Development
+> Веб-приложение, разработанное в рамках дипломной работы. Проект представляет собой, сайт с курсом "Основы ИИ".
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+---
