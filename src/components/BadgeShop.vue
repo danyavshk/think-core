@@ -42,7 +42,6 @@ const mockBadges: Badge[] = [
     price: 0,
     type: 'achievement',
     is_active: false,
-    // effect: 'glow',
   },
   {
     id: 'mock-2',
@@ -52,7 +51,6 @@ const mockBadges: Badge[] = [
     price: 150,
     type: 'progress',
     is_active: false,
-    // effect: 'pulse',
   },
   {
     id: 'mock-3',
@@ -62,7 +60,6 @@ const mockBadges: Badge[] = [
     price: 100,
     type: 'fun',
     is_active: false,
-    // effect: 'dark-glow',
   },
 ]
 

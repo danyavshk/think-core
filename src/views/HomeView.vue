@@ -75,13 +75,10 @@ async function handleGoModule(slug: string) {
       showLogin.value = true
       return
     }
-    // Загружаем прогресс перед переходом
     await gamificationStore.loadProgress()
-    // Если авторизован — переход
     router.push(`/modules/${slug}`)
   } catch (error) {
     console.error('Ошибка при переходе к модулю:', error)
-    // Можно добавить уведомление об ошибке
   }
 }
 
@@ -89,7 +86,6 @@ function handleAbout() {
   router.push('/about')
 }
 
-// Обработчики событий модальных окон
 function handleLoginSuccess() {
   showLogin.value = false
   gamificationStore.loadProgress()

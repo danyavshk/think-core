@@ -49,16 +49,13 @@ function toggleTheme() {
   <header
     class="w-full py-2 sm:py-4 px-2 sm:px-6 bg-white/80 dark:bg-neutral-900/90 backdrop-blur shadow-material sticky top-0 z-50 border-b border-gray-200 dark:border-neutral-800 sm:border sm:rounded-xl"
   >
-    <!-- Верхняя строка: логотип + кнопки (моб/десктоп) -->
     <div class="flex items-center w-full">
-      <!-- Логотип -->
       <div
         class="flex items-center gap-2 select-none flex-none"
         @click="() => router.push('/')"
         style="cursor: pointer"
       >
         <span class="inline-block">
-          <!-- SVG Anvil (Material style) -->
           <svg
             width="36"
             height="36"
@@ -108,7 +105,6 @@ function toggleTheme() {
           >ThinkForge</span
         >
       </div>
-      <!-- Магазин (только на sm+) -->
       <div class="hidden sm:flex flex-1 justify-center items-center h-full">
         <router-link
           v-if="profile"
@@ -138,7 +134,6 @@ function toggleTheme() {
           <span class="hidden sm:inline">Магазин</span>
         </router-link>
       </div>
-      <!-- Кнопки профиля/темы -->
       <div class="flex items-center gap-2 sm:gap-4 flex-none ml-auto sm:ml-0">
         <button
           @click="toggleTheme"
@@ -215,14 +210,12 @@ function toggleTheme() {
         </template>
       </div>
     </div>
-    <!-- Кнопки входа/регистрации отдельной строкой под логотипом на мобиле -->
     <div class="flex sm:hidden w-full justify-center mt-2" v-if="!profile">
       <div class="flex gap-3">
         <LoginButton @click="showLogin = true" />
         <RegisterButton @click="showRegister = true" />
       </div>
     </div>
-    <!-- Магазин только на мобиле -->
     <div class="flex sm:hidden w-full justify-center mt-2">
       <router-link
         v-if="profile"
@@ -252,7 +245,6 @@ function toggleTheme() {
         <span>Магазин</span>
       </router-link>
     </div>
-    <!-- Кнопки входа/регистрации фиксировано внизу на мобиле -->
     <div
       class="fixed bottom-0 left-0 w-full flex justify-center gap-2 pb-4 bg-transparent pointer-events-none z-50 sm:hidden"
     >

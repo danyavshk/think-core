@@ -26,7 +26,6 @@ const gamification = useGamificationStore()
 const showStats = ref(true)
 const showBadgeSelector = ref(false)
 
-// Для динамической высоты
 const profileSectionRef = ref<HTMLElement | null>(null)
 const profileHeight = ref(0)
 

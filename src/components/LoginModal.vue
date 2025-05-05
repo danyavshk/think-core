@@ -94,17 +94,14 @@ const login = async () => {
       loading.value = false
       return
     }
-    // Получаем user.id
     const user = data.user
     if (user) {
-      // Проверяем, есть ли профиль
       const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('id')
         .eq('id', user.id)
         .single()
       if (profileError && profileError.code === 'PGRST116') {
-        // Если нет — создаём профиль (имя/фамилия пустые)
         const { error: insertError } = await supabase.from('profiles').insert([
           {
             id: user.id,

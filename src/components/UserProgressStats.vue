@@ -99,7 +99,6 @@ import { useGamificationStore } from '../stores/gamification'
 const gamification = useGamificationStore()
 const totalScore = computed(() => gamification.totalScore)
 
-// Для отображения названия модуля по slug (можно расширить)
 const moduleTitles: Record<string, string> = {
   'intro-to-ai': 'Введение в ИИ',
   'machine-learning': 'Основы машинного обучения',

@@ -9,7 +9,6 @@
         @ready="onPlayerReady"
         @stateChange="onPlayerStateChange"
       />
-      <!-- Предупреждение о fullscreen -->
       <div
         v-if="isFullscreen"
         class="absolute inset-0 flex items-center justify-center bg-black/80 z-30"
@@ -61,7 +60,6 @@
         </div>
       </div>
     </transition>
-    <!-- Финальный экран -->
     <transition name="fade">
       <div
         v-if="showResult"
@@ -86,7 +84,6 @@
         </div>
       </div>
     </transition>
-    <!-- Баллы -->
     <div
       class="absolute top-2 right-2 sm:top-3 sm:right-4 bg-primary/90 text-white px-3 py-1 sm:px-4 rounded-full text-xs sm:text-sm font-bold z-20 flex items-center gap-2 shadow"
     >
@@ -116,7 +113,6 @@ let player: unknown = null
 const isFullscreen = ref(false)
 const showResult = ref(false)
 
-// Пример вопросов (тайминги под видео AI Explained)
 const questions = [
   {
     time: 15,
@@ -172,7 +168,6 @@ function stopInterval() {
 
 function checkTime() {
   if (!player || showQuestion.value || showResult.value) return
-  // fullscreen detection
   isFullscreen.value = document.fullscreenElement !== null
   const time = (player as unknown as { getCurrentTime: () => number }).getCurrentTime()
   const idx = questions.findIndex(
@@ -185,7 +180,6 @@ function checkTime() {
     answered.value = false
     isCorrect.value = false
   }
-  // финал
   if (time > 100 && !showResult.value) {
     showResult.value = true
     stopInterval()

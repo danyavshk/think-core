@@ -124,7 +124,6 @@ const register = async () => {
   }
   loading.value = true
   try {
-    // 1. Регистрация в Auth
     const { data, error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value,
@@ -134,7 +133,6 @@ const register = async () => {
       loading.value = false
       return
     }
-    // 2. Добавление профиля
     const user = data.user
     if (user) {
       const { error: profileError } = await supabase.from('profiles').insert([
@@ -150,7 +148,6 @@ const register = async () => {
         loading.value = false
         return
       }
-      // 3. Автоматический вход
       const { error: signInError } = await supabase.auth.signInWithPassword({
         email: email.value,
         password: password.value,

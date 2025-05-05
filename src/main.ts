@@ -11,7 +11,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-// Автоматическая установка темы по системным настройкам
 function setInitialTheme() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
   if (prefersDark) {
@@ -22,7 +21,6 @@ function setInitialTheme() {
 }
 setInitialTheme()
 
-// Слушаем смену темы в системе
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
   if (e.matches) {
     document.documentElement.classList.add('dark')

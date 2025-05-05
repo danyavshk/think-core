@@ -2,7 +2,6 @@
   <div
     class="relative w-full max-w-2xl mx-auto bg-white/90 dark:bg-neutral-900/90 border border-gray-200 dark:border-neutral-800 rounded-2xl shadow-material-lg p-6 sm:p-10 flex flex-col items-center gap-4 overflow-hidden transition-colors duration-300"
   >
-    <!-- Кнопки управления: desktop -->
     <div class="absolute top-4 right-4 flex gap-2 z-20 hidden sm:flex">
       <button
         @click="$emit('edit')"
@@ -82,7 +81,6 @@
         </template>
         <span v-else>?</span>
       </div>
-      <!-- Активный бейдж: под аватаром -->
       <div v-if="activeBadge" class="mt-1 mb-1 flex justify-center w-full">
         <span :title="activeBadge.name" class="text-3xl sm:text-4xl drop-shadow-glow select-none">{{
           activeBadge.icon
@@ -100,7 +98,6 @@
       >
         {{ profile.email }}
       </div>
-      <!-- Кнопки управления: mobile -->
       <div class="flex sm:hidden flex-row gap-2 w-full justify-center mt-2 mb-1">
         <button
           @click="$emit('edit')"
