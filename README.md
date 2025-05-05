@@ -11,7 +11,6 @@
 
 ## 🔗 Cсылки
 - 🌐 Сайт: https://frabjous-sprinkles-05a1f0.netlify.app/
-- 📄 Документация: https://drive.google.com/drive/folders/1aP9wMgAWdjnyr1X1spY1pgdc5v1Th3OC?usp=sharing
 
 ---
 
