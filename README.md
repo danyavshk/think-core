@@ -31,8 +31,8 @@
 | <img src="https://cdn.simpleicons.org/vue.js/4FC08D" height="24"/> | **Vue.js** | Фронтенд-фреймворк |
 | <img src="https://cdn.simpleicons.org/typescript/3178C6" height="24"/> | **TypeScript** | Типобезопасный JavaScript |
 | <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" height="24"/> | **Tailwind CSS** | Утилитарный CSS |
-| <img src="https://cdn.simpleicons.org/vuerouter/FF7E00" height="24"/> | **Vue Router** | SPA-маршрутизация |
-| <img src="https://cdn.simpleicons.org/pinia/FFCC00" height="24"/> | **Pinia** | Состояние приложения |
+| <img src="https://vuejs.org/images/logo.png" height="24"/> | **Vue Router** | SPA-маршрутизация |
+| <img src="https://pinia.vuejs.org/logo.svg" height="24"/> | **Pinia** | Состояние приложения |
 | <img src="https://cdn.simpleicons.org/supabase/3ECF8E" height="24"/> | **Supabase** | База данных и аутентификация |
 | <img src="https://cdn.simpleicons.org/vite/646CFF" height="24"/> | **Vite** | Сборка и разработка |
 | <img src="https://cdn.simpleicons.org/netlify/00C7B7" height="24"/> | **Netlify** | Деплой и хостинг |
