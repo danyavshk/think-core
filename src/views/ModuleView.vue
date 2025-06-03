@@ -27,8 +27,8 @@ const errorMsg = ref('')
 const renderedContent: Ref<string> = ref('')
 const gamification = useGamificationStore()
 const { moduleProgress, loading: progressLoading } = storeToRefs(gamification)
+const showHeaderFooter = ref(true)
 
-// Сопоставление slug -> номер модуля
 const moduleNumbers: Record<string, number> = {
   'intro-to-ai': 1,
   'machine-learning': 2,
@@ -39,30 +39,61 @@ const moduleNumbers: Record<string, number> = {
 }
 
 onMounted(async () => {
-  const { data: authData } = await supabase.auth.getUser()
-  if (!authData.user) {
-    router.replace('/')
-    return
-  }
-  const slug = route.params.slug as string
-  const { data, error } = await supabase
-    .from('course_modules')
-    .select('*')
-    .eq('slug', slug)
-    .single()
-  if (error || !data) {
-    errorMsg.value = 'Модуль не найден.'
-  } else {
-    moduleData.value = data
-    const html = marked(data.content || '')
-    if (html instanceof Promise) {
-      renderedContent.value = await html
+  try {
+    const { data: authData, error: authError } = await supabase.auth.getUser()
+    if (authError) {
+      console.error('Auth error:', authError)
+      errorMsg.value = 'Ошибка авторизации. Пожалуйста, войдите снова.'
+      router.replace('/')
+      return
+    }
+    if (!authData.user) {
+      router.replace('/')
+      return
+    }
+
+    const slug = route.params.slug as string
+    if (!slug) {
+      errorMsg.value = 'Неверный URL модуля.'
+      return
+    }
+
+    const { data, error } = await supabase
+      .from('course_modules')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+
+    if (error) {
+      console.error('Module fetch error:', error)
+      errorMsg.value = 'Ошибка загрузки модуля. Пожалуйста, попробуйте позже.'
+    } else if (!data) {
+      errorMsg.value = 'Модуль не найден.'
     } else {
-      renderedContent.value = html
+      moduleData.value = data
+      try {
+        const html = marked(data.content || '')
+        if (html instanceof Promise) {
+          renderedContent.value = await html
+        } else {
+          renderedContent.value = html
+        }
+      } catch (markdownError) {
+        console.error('Markdown parsing error:', markdownError)
+        renderedContent.value = data.content || ''
+      }
+    }
+  } catch (err) {
+    console.error('Unexpected error:', err)
+    errorMsg.value = 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.'
+  } finally {
+    loading.value = false
+    try {
+      await gamification.loadProgress()
+    } catch (progressError) {
+      console.error('Error loading progress:', progressError)
     }
   }
-  loading.value = false
-  gamification.loadProgress()
 })
 
 function handleCompleted(score: number) {
@@ -74,13 +105,17 @@ function handleCompleted(score: number) {
     })
   }
 }
+
+function handleLandscapeMode(isLandscape: boolean) {
+  showHeaderFooter.value = !isLandscape
+}
 </script>
 
 <template>
   <div
     class="min-h-screen flex flex-col bg-surface dark:bg-surface-dark transition-colors duration-300"
   >
-    <SiteHeader />
+    <SiteHeader v-if="showHeaderFooter" />
     <main class="flex-1 flex flex-col items-center justify-center px-4 py-12 pt-20">
       <div
         class="w-full max-w-2xl bg-white/90 dark:bg-neutral-900/90 border border-gray-200 dark:border-neutral-800 rounded-2xl shadow-material-lg px-6 py-8 flex flex-col items-center transition-colors duration-300"
@@ -107,6 +142,7 @@ function handleCompleted(score: number) {
               v-if="!moduleProgress[moduleData.slug]"
               video-url="https://www.youtube.com/watch?v=2ePf9rue1Ao"
               :completed="!!moduleProgress[moduleData.slug]"
+              @landscapeMode="handleLandscapeMode"
               @completed="handleCompleted"
             />
           </template>
@@ -314,7 +350,7 @@ function handleCompleted(score: number) {
         </template>
       </div>
     </main>
-    <SiteFooter />
+    <SiteFooter v-if="showHeaderFooter" />
   </div>
 </template>
 

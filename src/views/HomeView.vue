@@ -70,15 +70,26 @@ const showNext = () => {
 
 async function handleGoModule(slug: string) {
   try {
-    const { data: authData } = await supabase.auth.getUser()
+    const { data: authData, error: authError } = await supabase.auth.getUser()
+    if (authError) {
+      console.error('Auth error:', authError)
+      showLogin.value = true
+      return
+    }
     if (!authData.user) {
       showLogin.value = true
       return
     }
-    await gamificationStore.loadProgress()
-    router.push(`/modules/${slug}`)
+    try {
+      await gamificationStore.loadProgress()
+      router.push(`/modules/${slug}`)
+    } catch (progressError) {
+      console.error('Error loading progress:', progressError)
+      router.push(`/modules/${slug}`)
+    }
   } catch (error) {
     console.error('Ошибка при переходе к модулю:', error)
+    showLogin.value = true
   }
 }
 
@@ -123,7 +134,11 @@ function handleRegisterSuccess() {
         </div>
         <div class="flex sm:hidden flex-col items-center w-full mt-2">
           <div class="flex justify-center w-full">
-            <CourseModuleCard v-bind="modules[currentIndex]" class="max-w-xs w-[90vw] mx-auto" />
+            <CourseModuleCard
+              v-bind="modules[currentIndex]"
+              class="max-w-xs w-[90vw] mx-auto"
+              @goModule="handleGoModule"
+            />
           </div>
           <div class="flex items-center justify-center gap-3 mt-4">
             <button
